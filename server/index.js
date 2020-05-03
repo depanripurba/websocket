@@ -61,17 +61,6 @@ io.on("connection", (socket) => {
     });
   });
   socket.on('registrasi',function(tes){  
-    let sql = "INSERT INTO user values ('','s','s','s','w','r','e')"
-    let values = {
-      id :'',
-      email:tes.email,
-      password:tes.password,
-      status:'',
-      nama:tes.nama,
-      alamat:tes.alamat,
-      gender:tes.jenisKelamin
-    }
-    console.log(tes.tes)
     db.query("INSERT INTO user SET ?",{
       id : "",
       email:tes.email,
@@ -82,7 +71,7 @@ io.on("connection", (socket) => {
       gender:tes.jenisKelamin
   },(err,fields)=>{
       if(err) throw err
-
+      socket.emit('resregister',{data:'true',pesan:'user baru berhasil di tambahkan'})
   })
    
     
