@@ -1,0 +1,13 @@
+.kotak{
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    border: 2px solid green;
+
+ 
+} 
+.konten{
+    display: grid;
+    grid-template-rows: 520px auto
+}
+

@@ -1,0 +1,29 @@
+.box{
+    display: grid;
+    grid-template-columns: auto 50px;
+    grid-template-rows: auto;
+}
+.kinput{
+    width: 100%;
+    border-radius: 5px;
+    padding:10px 10px;
+    height: 50px;
+    font-size: 14px;
+    letter-spacing: 2px;
+}
+.send{
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    background: rgb(139, 139, 194);
+}
+.send:hover{
+    background: rgb(190, 119, 119);
+}
+.kata{
+    justify-self:center ;
+    justify-items: center;
+    align-items: center;
+    align-self: center;
+}
+ 

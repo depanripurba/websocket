@@ -1,0 +1,15 @@
+.joinInerContainer{
+    display:block;
+    
+}
+.joinEksContainer{
+    border: 1px solid green;
+    width: 300px;
+    display: block;
+    margin: auto;
+    margin-top: 100px;
+    padding-bottom: 20px;
+}
+.name,.room{
+    margin: 5px;
+}
