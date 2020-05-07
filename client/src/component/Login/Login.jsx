@@ -12,16 +12,16 @@ const Login = ({login})=>{
         console.log(password)
         socket = io(ENDPOINT)
         socket.on('konfirmasi',data=>{
+
+            console.log(data.kode)
                 if(data.kode === 1){
                     console.log(data.pesan)
                 }else if(data.kode === 2){
                     alert(data.pesan)
                     console.log(data.pesan)
-                }else if(data.kode === 3){
+                }else{
                     alert(data.pesan)
                     console.log(data.pesan)
-                }else{
-
                 }
                 login(data.data)
         

@@ -44,20 +44,30 @@ io.on("connection", (socket) => {
   socket.on("login", ({ email, password }) => {
     let sql = `SELECT*FROM user WHERE ?`;
     console.log(email, password);
-
+    let cek = true
     db.query(sql,{email:email}, function (err, result) {
       if (err) throw err;
       result.map((data) => {
         if (data.email === email) {
           if(password===data.password){
             socket.emit('konfirmasi',{data:true,kode:1,pesan:'anda bisa masuk ke dalam sistem'})
+            cek = false
           }else{
             socket.emit('konfirmasi',{data:false,kode:2,pesan:'password yang anda masukkan salah'})
+            console.log(data)
+            cek = false
           }
-        } else {
+        }else if(data = null){
           socket.emit('konfirmasi',{data:false,kode:3,pesan:'data anda tidak terdaftar di dalam sistem kami'})
+          console.log(data)
+          cek = false
+        }else{
+          console.log("ini sudah keterlaluan")
         }
+        console.log(data)
       });
+      if(cek)
+      socket.emit('konfirmasi',{data:false,kode:3,pesan:'Data anda tidak terdaftar di sistem kami\nSilahkan anda registrasi dulu'})
     });
   });
   socket.on('registrasi',function(tes){  
