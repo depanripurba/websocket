@@ -32,14 +32,16 @@ const Chat = () => {
     socket.emit("kirimpesan", message);
     setMessage("");
   };
-
+  const ambilKontak=(value)=>{
+    alert(value)
+  }
   return (
     <Fragment>
       {console.log(name,room)}
       <div className="bagidua">
         <Header />
         <div className="kontak">
-          <Kontak />
+          <Kontak kontak={(value)=>ambilKontak(value)} />
         </div>
         <div className="bagianchat">
         <Chatbox pesan={messages} nama={name} />
