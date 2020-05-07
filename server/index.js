@@ -42,10 +42,10 @@ io.on("connection", (socket) => {
       .emit("pesan", { user: "admin", text: `${user.name} has joind` });
   });
   socket.on("login", ({ email, password }) => {
-    let sql = `SELECT*FROM user`;
+    let sql = `SELECT*FROM user WHERE ?`;
     console.log(email, password);
 
-    db.query(sql, function (err, result) {
+    db.query(sql,{email:email}, function (err, result) {
       if (err) throw err;
       result.map((data) => {
         if (data.email === email) {
