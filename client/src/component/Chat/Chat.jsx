@@ -31,12 +31,13 @@ const Chat = () => {
   const sender = () => {
     socket.emit("kirimpesan", message);
     setMessage("");
-  };
+  }; 
   const ambilKontak=(value)=>{
-    alert(value)
+    socket.emit('gabung',{tujuan:value})
+    // alert(value)
   }
   return (
-    <Fragment>
+    <Fragment> 
       {console.log(name,room)}
       <div className="bagidua">
         <Header />

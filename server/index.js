@@ -41,6 +41,9 @@ io.on("connection", (socket) => {
       .to(user.room)
       .emit("pesan", { user: "admin", text: `${user.name} has joind` });
   });
+  socket.on('gabung',({tujuan})=>{
+    console.log(tujuan)
+  })
   socket.on("login", ({ email, password }) => {
     let sql = `SELECT*FROM user WHERE ?`;
     console.log(email, password);

@@ -13,7 +13,7 @@ const Kontak = ({kontak})=>{
            { 
                namaa.map(nama=>{
                   return(
-                      <p name='kampret' onClick={(e)=>Chat(e)}> {nama} </p>
+                      <p name='kampret' onClick={(e)=>Chat(e)}>{nama}</p>
                   )
                })
            }
