@@ -3,7 +3,7 @@ import io from 'socket.io-client'
 import "./Login.css"
 import {Link} from 'react-router-dom'
 let socket
-const Login = ({login})=>{
+const Login = ({login,nama})=>{
     const ENDPOINT = 'localhost:5000'
     const [email,setEmail] = useState()
     const [password,setPassword] = useState()
@@ -12,19 +12,18 @@ const Login = ({login})=>{
         console.log(password)
         socket = io(ENDPOINT)
         socket.on('konfirmasi',data=>{
+            console.log(data.kode)
                 if(data.kode === 1){
                     console.log(data.pesan)
+                    login(data.data)
+                    nama(email)
                 }else if(data.kode === 2){
                     alert(data.pesan)
                     console.log(data.pesan)
-                }else if(data.kode === 3){
+                }else{
                     alert(data.pesan)
                     console.log(data.pesan)
-                }else{
-
                 }
-                login(data.data)
-        
         })
         console.log("ini hal yang sangat aneh ba benar bernar aneh saya tidak tau harus berbuat apa")
     })
@@ -47,7 +46,7 @@ const Login = ({login})=>{
                     <input type="password"  id="password" className="form-control" placeholder="input your password" value={password} onChange={(e)=>setPassword(e.target.value)}/>
                 </div>
                 <div className="form-group">
-                   <button type="submit" name="submit" className="btn-primary" onClick={cekUSer} >Login</button>
+                   <button type="submit" name="submit" className="btn btn-primary" onClick={cekUSer} >Login</button>
                 </div> 
                 <div className="form-group">
                   <Link to='/Registrasi'>Anda belum punya akun silahkan registrasi</Link>

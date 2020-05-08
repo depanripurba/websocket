@@ -8,8 +8,8 @@ import Kontak from '../Kontak/Kontak'
 import "./Chat.css"
 
 let socket; 
-const Chat = () => {
-  const [name, setName] = useState("depanri purba");
+const Chat = ({user}) => {
+  const [name, setName] = useState(user);
   const [room, setRoom] = useState("room1");
   const [users, setUsers] = useState();
   const [message, setMessage] = useState("");
@@ -31,15 +31,18 @@ const Chat = () => {
   const sender = () => {
     socket.emit("kirimpesan", message);
     setMessage("");
-  };
-
+  }; 
+  const ambilKontak=(value)=>{
+    socket.emit('gabung',{tujuan:value})
+    // alert(value)
+  }
   return (
-    <Fragment>
+    <Fragment> 
       {console.log(name,room)}
       <div className="bagidua">
         <Header />
         <div className="kontak">
-          <Kontak />
+          <Kontak kontak={(value)=>ambilKontak(value)} />
         </div>
         <div className="bagianchat">
         <Chatbox pesan={messages} nama={name} />
