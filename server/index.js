@@ -31,7 +31,7 @@ io.on("connection", (socket) => {
     console.log(room,name)
     const { user } = addUser({ id: socket.id, name, room });
     // daftarkan user ke soket aktif
-    socket.join(user.room);
+    // socket.join(user.room);
     // kirim balik pesan
     socket.emit("pesan", {
       user: `admin`,

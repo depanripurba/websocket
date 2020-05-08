@@ -12,10 +12,11 @@ const Login = ({login,nama})=>{
         console.log(password)
         socket = io(ENDPOINT)
         socket.on('konfirmasi',data=>{
-
             console.log(data.kode)
                 if(data.kode === 1){
                     console.log(data.pesan)
+                    login(data.data)
+                    nama(email)
                 }else if(data.kode === 2){
                     alert(data.pesan)
                     console.log(data.pesan)
@@ -23,9 +24,6 @@ const Login = ({login,nama})=>{
                     alert(data.pesan)
                     console.log(data.pesan)
                 }
-                login(data.data)
-                nama(email)
-        
         })
         console.log("ini hal yang sangat aneh ba benar bernar aneh saya tidak tau harus berbuat apa")
     })
