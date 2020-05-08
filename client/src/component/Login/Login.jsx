@@ -46,7 +46,7 @@ const Login = ({login,nama})=>{
                     <input type="password"  id="password" className="form-control" placeholder="input your password" value={password} onChange={(e)=>setPassword(e.target.value)}/>
                 </div>
                 <div className="form-group">
-                   <button type="submit" name="submit" className="btn-primary" onClick={cekUSer} >Login</button>
+                   <button type="submit" name="submit" className="btn btn-primary" onClick={cekUSer} >Login</button>
                 </div> 
                 <div className="form-group">
                   <Link to='/Registrasi'>Anda belum punya akun silahkan registrasi</Link>
