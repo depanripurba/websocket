@@ -8,8 +8,8 @@ import Kontak from '../Kontak/Kontak'
 import "./Chat.css"
 
 let socket; 
-const Chat = () => {
-  const [name, setName] = useState("depanri purba");
+const Chat = ({user}) => {
+  const [name, setName] = useState(user);
   const [room, setRoom] = useState("room1");
   const [users, setUsers] = useState();
   const [message, setMessage] = useState("");

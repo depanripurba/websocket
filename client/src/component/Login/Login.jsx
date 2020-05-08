@@ -3,7 +3,7 @@ import io from 'socket.io-client'
 import "./Login.css"
 import {Link} from 'react-router-dom'
 let socket
-const Login = ({login})=>{
+const Login = ({login,nama})=>{
     const ENDPOINT = 'localhost:5000'
     const [email,setEmail] = useState()
     const [password,setPassword] = useState()
@@ -24,6 +24,7 @@ const Login = ({login})=>{
                     console.log(data.pesan)
                 }
                 login(data.data)
+                nama(email)
         
         })
         console.log("ini hal yang sangat aneh ba benar bernar aneh saya tidak tau harus berbuat apa")
