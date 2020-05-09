@@ -13,7 +13,7 @@ const db = mysql.createConnection({
 db.connect(function (err) {
   if (err) throw err;
   console.log("Connected!");
-});
+}); 
 
 const PORT = process.env.PORT || 5000;
 const router = require("./router");
@@ -44,6 +44,10 @@ io.on("connection", (socket) => {
   socket.on('gabung',({tujuan})=>{
     console.log(tujuan)
   })
+  socket.on('upload',({data})=>{
+    console.log(data)
+    console.log('pesan ini sedang diakses')
+  })
   socket.on("login", ({ email, password }) => {
     let sql = `SELECT*FROM user WHERE ?`;
     console.log(email, password);
@@ -55,7 +59,7 @@ io.on("connection", (socket) => {
           if(password===data.password){
             socket.emit('konfirmasi',{data:true,kode:1,pesan:'anda bisa masuk ke dalam sistem'})
             cek = false
-          }else{
+          }else{ 
             socket.emit('konfirmasi',{data:false,kode:2,pesan:'password yang anda masukkan salah'})
             console.log(data)
             cek = false
