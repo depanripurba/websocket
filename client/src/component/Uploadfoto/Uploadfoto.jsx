@@ -1,7 +1,10 @@
 import React from 'react'
+import Upload from '.././Upload/Upload'
 const Uploadfoto = ()=>{
     return(
-        <p>Selamat datang di halaman Upload foto</p>
+        <center>
+        <Upload />
+        </center>
     )
 }
 export default Uploadfoto
