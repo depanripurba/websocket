@@ -1,14 +1,22 @@
 import React,{useState,useEffect} from 'react'
+import ImageUploader from 'react-images-upload'
 const Upload = ()=>{
-    const [file,setFile] = useState()
+    const [gambar,setGambar] = useState()
     useEffect(()=>{
-        console.log(file)
+      const data = new FormData()
+      data.append('file',gambar)
+      console.log(gambar)
     })
     return(
-        <div className="mt-3">
-            <input type="file" onChange={(e)=>setFile(e.target.files[0])} /><br/>
-            <button type="submit" className="btn btn-danger">Send</button>
-        </div>
+        <ImageUploader
+                withIcon={false}
+                withLabel={true}
+                withPreview={true}
+                buttonText='Pilih Gambar'
+                onChange={(picture)=>setGambar(picture[0])}
+                imgExtension={['.jpg', '.gif', '.png', '.gif']}
+                maxFileSize={5242880}
+            />
     )
 }
 export default Upload
