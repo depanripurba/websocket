@@ -2,6 +2,9 @@ const express = require("express");
 const socketio = require("socket.io");
 const http = require("http");
 const mysql = require("mysql");
+const router = require("./router");
+const cors = require('cors')
+
 
 const db = mysql.createConnection({
   host: "localhost",
@@ -16,7 +19,6 @@ db.connect(function (err) {
 }); 
 
 const PORT = process.env.PORT || 5000;
-const router = require("./router");
 const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
@@ -112,6 +114,6 @@ io.on("connection", (socket) => {
     console.log(name + " keluar =>" + jumlah.length + "sedang  konek");
   });
 });
-
+app.use(cors())
 app.use(router);
 server.listen(PORT, () => console.log(`Server is running in Port ${PORT}`));
