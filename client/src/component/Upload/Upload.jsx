@@ -7,7 +7,7 @@ import axios from "axios";
 const Upload = () => {
   const [gambar, setGambar] = useState();
   useEffect(() => {
-    // socket = io(ENDPOINT);
+   
   });
   const kirimgambar = (e) => {
     e.preventDefault();
@@ -16,10 +16,17 @@ const Upload = () => {
     fd.append('name','depanripurba')
     console.log(fd.get('gambar'))
     console.log(gambar)
-    axios.post("http://localhost:5000/upload", fd).then((res) => {
+    axios.post("http://localhost:5000/upload", fd,{
+      onUploadProgress: progressEvent =>{
+        console.log('upload progres :' + Math.round(progressEvent.loaded / progressEvent.total * 100) + '%')
+      }
+    }).then((res) => {
       console.log(res);
     });
   };
+  const updatastate = ()=>{
+    
+  }
   return (
     <div>
       <form>
@@ -36,8 +43,6 @@ const Upload = () => {
           imgExtension={[".jpg", ".gif", ".png", ".gif"]}
           maxFileSize={5242880}
         />
-
-        {/* <input type="file" onChange={e=>setGambar(e.target.files[0])} /> */}
       </form>
       <center>
         <button onClick={kirimgambar} className="btn btn-primary">

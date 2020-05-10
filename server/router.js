@@ -17,6 +17,9 @@ router.get("/", (req, res) => {
 });
 // bagian route untuk upload file
 router.post("/upload", upload.single("gambar"),(req, res, next) => {
-   
+   res.send({
+       data:'true',
+       pesan:'gambar berhasil di upload'
+   })
 });
 module.exports = router;
