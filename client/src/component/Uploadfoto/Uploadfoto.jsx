@@ -1,10 +1,11 @@
 import React from 'react'
 import Upload from '.././Upload/Upload'
 
-const Uploadfoto = ()=>{
+const Uploadfoto = ({user})=>{
     return(
         <center>
-        <Upload />
+        <Upload user={user} />
+        {console.log(user)}
         </center>
     )
 }

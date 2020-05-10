@@ -4,7 +4,7 @@ import ImageUploader from "react-images-upload";
 import axios from "axios";
 // let socket;
 // const ENDPOINT = "localhost:5000";
-const Upload = () => {
+const Upload = ({user}) => {
   const [gambar, setGambar] = useState();
   useEffect(() => {
    
@@ -13,9 +13,12 @@ const Upload = () => {
     e.preventDefault();
     const fd = new FormData();
     fd.append("gambar", gambar)
-    fd.append('name','depanripurba')
-    console.log(fd.get('gambar'))
+    fd.append('gambar','depanri purba')
     console.log(gambar)
+    const nama = "depanri"
+    axios.post("http://localhost:5000/ambilnama",{nama:nama}).then((res) => {
+      console.log(res);
+    })
     axios.post("http://localhost:5000/upload", fd,{
       onUploadProgress: progressEvent =>{
         console.log('upload progres :' + Math.round(progressEvent.loaded / progressEvent.total * 100) + '%')

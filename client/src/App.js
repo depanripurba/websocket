@@ -8,7 +8,7 @@ import Uploadfoto from "./component/Uploadfoto/Uploadfoto"
   
 
 const App = ()=>{
-   var [login,setLogin] = useState(false)
+   var [login,setLogin] = useState(true)
    var [user,setUser] = useState("ini hanya percobaan saja")
    
     return(
@@ -17,7 +17,7 @@ const App = ()=>{
         <Route path="/" exact render={()=>login===true ? (<Home />) : (<Login nama={(nilai)=>setUser(nilai)} login={(value)=>setLogin(value)} />)} />
         <Route path="/chat" component={Chat} />
         <Route path="/Registrasi" component={Registrasi} />
-        <Route path="/Upload" component={Uploadfoto} />
+        <Route path="/uploadfoto" render={()=>login===true ? (<Uploadfoto user={user} />) : (<Login nama={(nilai)=>setUser(nilai)} login={(value)=>setLogin(value)} />)} />
     </Router>
     )
 }

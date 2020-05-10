@@ -49,7 +49,7 @@ const Registrasi = ({login})=>{
                     <input type="password"  id="password" className="form-control" placeholder="input your password" value={password} onChange={(e)=>setPassword(e.target.value)}/>
                 </div>
                 <div className="form-group">
-                   <button type="submit" name="submit" className="btn-primary" onClick={Registrasi} >Registrasi</button>
+                   <button type="submit" name="submit" className="btn btn-primary" onClick={Registrasi} >Registrasi</button>
                 </div>        
             </form>
             </div>
