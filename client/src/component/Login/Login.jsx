@@ -8,13 +8,9 @@ const Login = ({login,nama})=>{
     const [email,setEmail] = useState()
     const [password,setPassword] = useState()
     useEffect(function(){
-        console.log(email)
-        console.log(password)
         socket = io(ENDPOINT)
         socket.on('konfirmasi',data=>{
-            console.log(data.kode)
                 if(data.kode === 1){
-                    console.log(data.pesan)
                     login(data.data)
                     nama(email)
                 }else if(data.kode === 2){
@@ -25,12 +21,10 @@ const Login = ({login,nama})=>{
                     console.log(data.pesan)
                 }
         })
-        console.log("ini hal yang sangat aneh ba benar bernar aneh saya tidak tau harus berbuat apa")
     })
     const cekUSer = (e)=>{
         e.preventDefault()
         socket.emit('login',{email:email,password:password})
-        console.log(email,password)
     
     }
     return(

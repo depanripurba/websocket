@@ -5,6 +5,8 @@ const mysql = require("mysql");
 const router = require("./router");
 const cors = require('cors')
 const bodyParser = require('body-parser')
+const bcrypt = require('bcrypt')
+const saltRounds = 10
 
 const db = mysql.createConnection({
   host: "localhost",
@@ -58,7 +60,7 @@ io.on("connection", (socket) => {
       if (err) throw err;
       result.map((data) => {
         if (data.email === email) {
-          if(password===data.password){
+          if(bcrypt.compareSync(password, data.password)){
             socket.emit('konfirmasi',{data:true,kode:1,pesan:'anda bisa masuk ke dalam sistem'})
             cek = false
           }else{ 
@@ -80,10 +82,11 @@ io.on("connection", (socket) => {
     });
   });
   socket.on('registrasi',function(tes){  
+    const hash = bcrypt.hashSync(tes.password, saltRounds);
     db.query("INSERT INTO user SET ?",{
       id : "",
       email:tes.email,
-      password:tes.password,
+      password:hash,
       status:'',
       nama:tes.nama,
       alamat:tes.alamat,

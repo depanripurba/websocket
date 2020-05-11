@@ -1,8 +1,11 @@
-import React,{Fragment} from 'react'
+import React,{Fragment,useEffect,useState} from 'react'
 import "./Home.css"
 import Modaljoin from '.././Modaljoin/Modaljoin'
-const Home = ()=>{
-    const kelas = ['depanri','antoni','minalda','doni']
+const Home = ({user})=>{
+    const [kontak,setKontak] = useState()
+    useEffect(()=>{
+        console.log(user)
+    }) 
     return(
         <Fragment>
             <center><h1 className="mt-2">BIOCHAT</h1></center>
@@ -14,5 +17,5 @@ const Home = ()=>{
         </div>
         </Fragment>
     )
-}
+} 
 export default Home

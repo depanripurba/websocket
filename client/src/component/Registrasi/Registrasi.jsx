@@ -10,17 +10,14 @@ const Registrasi = ({login})=>{
     const [jenisKelamin,setJenisKelamin] = useState()
     const [alamat,setAlamat] = useState()
     useEffect(function(){
-        console.log(email)
-        console.log(password)
-        socket = io(ENDPOINT)
-        console.log("ini hal yang sangat aneh ba benar bernar aneh saya tidak tau harus berbuat apa")
+        socket = io(ENDPOINT);
+        socket.on('resregister',(data)=>{
+            login(data.data)
+        })
     })
     const Registrasi = (e)=>{
         e.preventDefault()
-        socket.emit('registrasi',{tes:'hai server',email,jenisKelamin,alamat,password,nama})
-        const set = [email,password,nama,alamat,jenisKelamin]
-        console.group(set)
-    
+        socket.emit('registrasi',{email,jenisKelamin,alamat,password,nama})
     }
     return(
         <Fragment>
