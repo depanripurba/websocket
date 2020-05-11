@@ -9,14 +9,15 @@ const Upload = ({user}) => {
   useEffect(() => {
    
   });
-  const kirimgambar = (e) => {
+  const kirimgambar = (e) => { 
     e.preventDefault();
     const fd = new FormData();
+    const samar = new FormData()
+    samar.append('nama','depanri purba')
     fd.append("gambar", gambar)
-    fd.append('gambar','depanri purba')
     console.log(gambar)
     const nama = "depanri"
-    axios.post("http://localhost:5000/ambilnama",{nama:nama}).then((res) => {
+    axios.post("http://localhost:5000/ambilnama",({nama : user})).then((res) => {
       console.log(res);
     })
     axios.post("http://localhost:5000/upload", fd,{

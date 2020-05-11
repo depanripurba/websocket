@@ -4,7 +4,7 @@ const http = require("http");
 const mysql = require("mysql");
 const router = require("./router");
 const cors = require('cors')
-
+const bodyParser = require('body-parser')
 
 const db = mysql.createConnection({
   host: "localhost",
@@ -114,6 +114,8 @@ io.on("connection", (socket) => {
     console.log(name + " keluar =>" + jumlah.length + "sedang  konek");
   });
 });
+app.use(bodyParser.urlencoded({extended:false}))
+app.use(bodyParser.json())
 app.use(cors())
 app.use(router);
 server.listen(PORT, () => console.log(`Server is running in Port ${PORT}`));

@@ -1,18 +1,15 @@
 const express = require("express");
 const multer = require("multer");
 const router = express.Router();
+var user
 var namafile
 const storage = multer.diskStorage({
     destination: function(req, file, cb){
-        cb(null, './public/')
+        cb(null, './public/') 
     },
-    filename: function(req, file, cb){
-        console.log(req)
-        console.log('wkwkwkwk anda telah kena hack')
-        console.log(file.mimetype)
+    filename: function(req, file, cb){ 
         const pecahnama = file.mimetype.split('/')
-        console.log(pecahnama[1])
-        namafile = file.fieldname + Date.now() + '.' + pecahnama[1]
+        namafile = user + '.' + pecahnama[1]
         cb(null,namafile)
     }
 })
@@ -23,11 +20,14 @@ router.get("/", (req, res) => {
 });
 //bagian hanya mengambil nama
 router.post("/ambilnama",(req,res) => {
-    console.log(req.body)
+    console.log(req.body.nama)
+    user = req.body.nama
 })
 // bagian route untuk upload file
 router.post("/upload", upload.single("gambar"),(req, res, next) => {
+   console.log(req.body)
    
+
     res.send({
        data:'true',
        pesan: namafile
