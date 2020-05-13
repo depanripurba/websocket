@@ -12,6 +12,7 @@ const Home = ({user})=>{
         <div className="box mt-3">
             <center>
                 <h3>Selamat datang di BIOCHAT</h3>
+                <img src="http://localhost/app/Desert.jpg" alt=""/>
                 <Modaljoin />
             </center>
         </div>
